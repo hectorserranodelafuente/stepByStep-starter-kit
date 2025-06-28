@@ -1,32 +1,36 @@
 const path = require('path')
+
 const confEmail = require('./confEmail.js')
+
 const confSMS = require('./confSMS.js')
 
+const confFrontTheme = require('./confFront.js')
+
+const confBackAPI = require('./confBack.js')
+
+const confCordova = require('./confCordova.js')
+
+const confLogs = require('./confLog.js')
+
+const confAI = require('./confAI.js')
 
 let dev = {
     
     dirPathProject: path.join(__dirname, ''),
-    dirPathCordovaProject: path.join(__dirname,'..','stepByStepCordova/www'),
-    dirPathCordovaViews: path.join(__dirname,'cordova/views/public/javascriptViews'),
-    dirPathLogger:path.join(__dirname,'/modules/logger'),
-    logsFileName:'logs.txt',
-    numberLinesLog:10,
-    scriptCompressProject:{
-        nodeModulesFolderName:path.join(__dirname,''),
-        zipFolderName: 'zipVersion',
-        zipOutputPath: path.join(__dirname, '..','/aws/zipVersions'),
-        version:'1_0_0',
-    },
+    dirPathCordovaProject: confCordova.pathCordovaProject,
+    dirPathCordovaViews: confCordova.pathCordovaViews,
+    dirPathLogger: confLogs.dirPathLogger,
+    logsFileName: confLogs.logsFileName,
+    numberLinesLog: confLogs.numberLinesLog,
     dbSqlitePath:path.join(__dirname,'/db/dev/sqlite/dbLoginDev.sqlite'),
     domain:'http://localhost:3000',
-    confEmail:true,
-    confSMS:true,
     transporter:confEmail.transporter,
     mailOptions:confEmail.mailOptions,
+    confEmail:true,
     confSMS:confSMS,
-    frontTech:'javascript',
-    frontTheme:'theme-default',
-    backAPI:'stepByStep-back-node-sqlite'
+    frontTheme:confFrontTheme.name,
+    backAPI:confBackAPI.name,
+    confAI:confAI
 
 }
 
